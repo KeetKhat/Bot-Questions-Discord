@@ -21,7 +21,10 @@ function EnvoyerQuestion()
 
     fs.writeFile('./questions.json', JSON.stringify(questions, null, 2), (err) =>
     {
-        console.log(questions.compteur)
+        if (err)
+        {
+            console.log('Impossible d\'enregistrer le fichier');
+        }
     })
 }
 
