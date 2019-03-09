@@ -7,7 +7,7 @@ const questions = require('./questions.json');
 
 client.on('ready', () => {
     client.user.setStatus('online')
-    cron.schedule('0 0 18 * * *', () =>
+    cron.schedule('0 0 17 * * *', () =>
     {
         EnvoyerQuestion();
     })
@@ -15,7 +15,12 @@ client.on('ready', () => {
 
 function EnvoyerQuestion()
 {
-    client.channels.get(config.id_salon).send(questions.questions[questions.compteur])
+    const embed = new Discord.RichEmbed()
+
+    embed.addField('Réflexion du jour', questions.questions[questions.compteur])
+        .setColor(config.couleur)
+
+    client.channels.get(config.id_salon).send(embed)
     
     questions.compteur === questions.compteur++
 
