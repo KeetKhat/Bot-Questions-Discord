@@ -22,7 +22,7 @@ function EnvoyerQuestion()
 
     client.channels.get(config.id_salon).send(embed)
     
-    questions.compteur === questions.compteur++
+    questions.compteur++
 
     fs.writeFile('./questions.json', JSON.stringify(questions, null, 2), (err) =>
     {
